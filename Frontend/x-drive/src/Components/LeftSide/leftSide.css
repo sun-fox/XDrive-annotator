@@ -1,0 +1,9 @@
+.lsContainer div {
+    margin-bottom: 10px;
+  }
+  
+  .lsContainer {
+    height: 100%;
+    background-color: rgb(66, 65, 65);
+  }
+  

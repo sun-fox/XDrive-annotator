@@ -1,0 +1,14 @@
+.tnContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .tnLeftSide {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .tnLeftSide div {
+    font-size: 20px;
+    margin-right: 20px;
+  }
+  
