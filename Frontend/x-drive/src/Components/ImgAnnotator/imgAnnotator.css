@@ -1,0 +1,8 @@
+.col{
+    background-color: rgb(66, 65, 65);
+    min-height: 90vh;
+    color: #fff;
+  }
+.col-lg-8{
+background-color: rgb(88, 88, 87);
+}

@@ -10,7 +10,7 @@ export default function RightSide() {
       // data.forEach(element => {
       //   element.replace("\\","/")
       // });
-      console.log("Incoming Data", data)
+      // console.log("Incoming Data", data)
       setData(data)
     })
   }, [])
