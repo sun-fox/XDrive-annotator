@@ -7,10 +7,10 @@ import "./datasetExplorer.css";
 export default function DataSetExplorer() {
   return (
     <div className="appContainer">
-    <div className="l3">
+    <div className="l2">
       <LeftSide />
     </div>
-    <div className="l7">
+    <div className="l8">
       <RightSide />
     </div>
   </div>

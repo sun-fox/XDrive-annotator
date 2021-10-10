@@ -1,3 +1,11 @@
 .imgPanel{
     display:flex;
+    margin: 10px;
+}
+.imgPanel h1{
+    width: 80%;
+    font-size: 1.7rem;
+}
+.imgPanel button{
+    width: 20%
 }

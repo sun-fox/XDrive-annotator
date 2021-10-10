@@ -6,4 +6,8 @@
     height: 100%;
     background-color: rgb(66, 65, 65);
   }
+
+.overlay{
+  z-index: 10;
+}
   

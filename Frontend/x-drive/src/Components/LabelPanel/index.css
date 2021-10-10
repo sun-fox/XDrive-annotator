@@ -1,0 +1,29 @@
+.main1 {
+    margin: auto;
+    padding: 10px;
+    list-style: none;
+    color: #000;
+  }
+
+  li .liststy{
+    background-color: white;
+  }
+
+  .liststy {
+    background-color: #eee;
+    margin-top: 20px;
+  }
+  .l3 li {
+    list-style-position: outside;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    text-decoration: none;
+  }
+  .l3 {
+    padding-left: 0;
+  }
+  .js2 {
+    list-style-position: inside;
+  }
+  
