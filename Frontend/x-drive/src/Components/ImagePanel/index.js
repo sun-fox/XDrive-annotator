@@ -40,15 +40,26 @@ export default function ImagePanel(props) {
       redirect: 'follow'
     };
 
-    fetch("http://192.168.0.101:5000/image", requestOptions)
+    fetch("http://172.18.12.202:5000//image", requestOptions)
       .then(response => {
         // console.log(response)
         return response.text()})
       .then(result => {
         setImg("detections/"+loc?.state?.src.substring(8))
         // console.log(result)
-        setData(result)})
+        setData(result)
+        // const options = {
+        //   method: 'POST',
+        //   headers: {
+        //       'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify(data)
+        // };
+        // console.log("Request Made to API to dump into MongoDB")
+        // fetch("http://localhost:4000/auto_annotations",options);
+      })
       .catch(error => console.log('error', error));
+      
 
     // console.log("hello")
     // const formData = new FormData();
@@ -69,7 +80,7 @@ export default function ImagePanel(props) {
   return (
       <div>
         <div  className="imgPanel">
-          <h1>Image: {loc?.state?.src.substring(8)}</h1>
+          <h1>Image: {loc?.state?.src.split("\\")[3]}</h1>
           <button className="btn btn-success" onClick={ClickHandler}> Annotate</button>
         </div>
         {loc && <img src={img || loc?.state?.src} alt=''></img>} 

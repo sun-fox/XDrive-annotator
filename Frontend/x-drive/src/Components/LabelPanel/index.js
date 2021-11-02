@@ -8,6 +8,15 @@ export default function LabelPanel(props) {
     console.log("LABEL-PANEL-dot", data)
     console.log("LABEL-PANEL-dot", data?.data)
     console.log("LABEL-PANEL-dot", data?.detects)
+      //  const options = {
+      //     method: 'POST',
+      //     headers: {
+      //         'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(data)
+      //   };
+      //   console.log("Request Made to API to dump into MongoDB")
+      //   fetch("http://localhost:4000/auto_annotations",options);
   
   if(data)
     console.log("LABEL-PANEL-dict", data["detects"])

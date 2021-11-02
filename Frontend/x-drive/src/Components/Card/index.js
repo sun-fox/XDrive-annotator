@@ -11,14 +11,20 @@ const Card = (props) => {
     console.log(src)
   }
 
+  const ClickHandlerNew=()=>{
+    history.push({pathname:'/label', state:{src}})
+    console.log("Path to Image File:",src)
+  }
+
   // console.log(src);
   return (
     <div className="card text-center" style={{width: '18rem', marginBottom: '5px'}}>
       <img src={src} class="card-img-top" alt=""></img>
       <div className="card-body">
-        <h5 className="card-title">{image}</h5>
+        <h5 className="card-title">{image.split("\\")[3]}</h5>
         <p className="card-text">The Details of the detected classes will be here</p>
-        <div className="btn btn-primary" style={{width:'80%'}} onClick={ClickHandler}>Annotate</div>
+        <div className="btn btn-primary" style={{width:'80%'}} onClick={ClickHandler}>Auto-Annotate</div>
+        <div className="btn btn-success" style={{width:'80%', marginTop:'5px'}} onClick={ClickHandlerNew}>Label</div>
       </div>
     </div>
   );
