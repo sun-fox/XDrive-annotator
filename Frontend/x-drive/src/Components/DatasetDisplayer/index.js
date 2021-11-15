@@ -66,6 +66,28 @@ export default function DatasetDisplayer(props) {
                       // setShowDatasets(singleData)
                       history.push("/datasets/"+singleData)
                     }}>Show</div>
+                     <div className="btn btn-info" style={{width:'80%', marginTop:'5px'}} onClick={()=>{
+                       console.log("to be written")
+                         var formdata = new FormData();
+                         formdata.append("dataset", singleData);
+
+                         var requestOptions = {
+                          method: 'POST',
+                          mode:'no-cors',
+                          body: formdata,
+                          redirect: 'follow'
+                        };
+
+                        fetch("http://192.168.0.104:5000/annotate_dataset", requestOptions)
+                          .then(response => {
+                            console.log(response)
+                            return response.text()})
+                          .then(result => {
+                            // setImg("detections/"+loc?.state?.src.substring(8))
+                            // setData(result)
+                          })
+                          .catch(error => console.log('error', error));
+                    }}>Auto-Annotate</div>
                     </div>
                 </div>
               </div>

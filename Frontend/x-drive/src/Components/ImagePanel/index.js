@@ -5,11 +5,50 @@ import './index.css'
 
 export default function ImagePanel(props) {
   const loc = useLocation();
-  console.log("Console: "+loc?.state?.src.substring(8));
+  console.log("Console: "+loc?.state?.src);
   const {data,setData}=props
   const [img,setImg] = useState()
   // const [data, setData] = useState()
   // const [images, setImage] = useState()
+
+  const SegmentationHandler = (e)=>{
+    // var dataset_path = 'C:/Users/1999s/OneDrive/Desktop/Xdrive/Frontend/x-drive/public/detections'
+    var formdata = new FormData();
+    console.log(e.target)
+    formdata.append("file1", e.target.file)
+    // const reader = new FileReader();
+    // reader.onload = () =>{
+    //   if(reader.readyState === 2){
+    //     // this.setState({profileImg: reader.result})
+    //     fileInput = reader.result;
+    //     console.log(reader.result)
+    //   }
+    // formdata.append("file1", fileInput.files[0], "/E:/bdd100k_images_100k/bdd100k/images/100k/test/cac07407-0396e053.jpg");
+
+    // formdata.append("file1", loc?.state?.src);
+    // console.log("image: ",dataset_path + loc?.state?.src.replace('\\','/'))
+    // console.log('send_data', formdata)
+
+    var requestOptions = {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formdata,
+      redirect: 'follow'
+    };
+
+    fetch("http://2905-35-236-129-183.ngrok.io/get_image", requestOptions)
+    .then(response => {
+      console.log(response)
+      return response.text()})
+    .then(result => {
+      // console.log(loc)
+      setImg("\\detections"+loc?.state?.src)
+      console.log("Result:",result)
+      setData(result)
+    })
+    .catch(error => console.log('error', error));
+    
+  }
 
   const ClickHandler= async()=>{
     // let data = await fetch("http://192.168.0.101:5000/image", requestOptions)
@@ -32,21 +71,24 @@ export default function ImagePanel(props) {
 
 
     var formdata = new FormData();
-    formdata.append("images", loc?.state?.src.substring(8));
+    console.log(formdata)
+    formdata.append("images", loc?.state?.src);
 
     var requestOptions = {
       method: 'POST',
+      mode: 'no-cors',
       body: formdata,
       redirect: 'follow'
     };
 
-    fetch("http://172.18.12.202:5000//image", requestOptions)
+    fetch("http://192.168.0.104:5000/image", requestOptions)
       .then(response => {
-        // console.log(response)
+        console.log(response)
         return response.text()})
       .then(result => {
-        setImg("detections/"+loc?.state?.src.substring(8))
-        // console.log(result)
+        // console.log(loc)
+        setImg("\\detections"+loc?.state?.src)
+        console.log("Result:",result)
         setData(result)
         // const options = {
         //   method: 'POST',
@@ -81,7 +123,13 @@ export default function ImagePanel(props) {
       <div>
         <div  className="imgPanel">
           <h1>Image: {loc?.state?.src.split("\\")[3]}</h1>
-          <button className="btn btn-success" onClick={ClickHandler}> Annotate</button>
+          <div>
+          <label htmlFor="input"> Instance Segment: &nbsp;</label>
+          <input type='file' onChange={SegmentationHandler}/>
+          </div>
+          {/* <button className="btn btn-warning" onClick={SegmentationHandler}>Segmentation</button> */}
+          &nbsp;
+          <button className="btn btn-success" onClick={ClickHandler}> Bounding-Box</button>
         </div>
         {loc && <img src={img || loc?.state?.src} alt=''></img>} 
         <div>

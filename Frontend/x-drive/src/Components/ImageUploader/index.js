@@ -16,7 +16,38 @@ export class App extends Component {
   };
 
   imageAdder = (e) => {
-	  console.log("Image to be Dumped in public.")
+	// const reader = new FileReader();
+	//   reader.onload = () =>{
+	//     if(reader.readyState === 2){
+	//       // this.setState({profileImg: reader.result})
+	//       file_path = reader.result;
+	//       console.log(reader.result)
+	//     }
+	//   }
+	//   reader.readAsDataURL(e.target.files[0])
+	//   console.log("Image")
+	//   var formdata = new FormData();
+	//   formdata.append("file",e.target.values);
+  
+	//   var requestOptions = {
+	//     method: 'POST',
+	//     mode:'no-cors',
+	//     body: formdata,
+	//     redirect: 'follow'
+	//   };
+  
+	//   // fetch("http://192.168.0.104:5000/import_dataset", requestOptions)
+	//   fetch("http://localhost:4000/import_dataset", requestOptions)
+	//     .then(response => {
+	//       console.log(response)
+	//       return response.text()})
+	//     .then(result => {
+	//       // setImg("detections/"+loc?.state?.src.substring(8))
+	//       // setData(result)
+	//     })
+	//     .catch(error => console.log('error', error));
+	// }
+
   };
 	render() {
     const { profileImg} = this.state
