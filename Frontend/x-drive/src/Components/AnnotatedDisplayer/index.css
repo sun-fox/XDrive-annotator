@@ -1,0 +1,22 @@
+.rsContainer {
+    /* height: 90vh; */
+    margin-bottom: 10px;
+    background-color: rgb(194, 196, 194);
+  }
+  
+  .rsContainerTop {
+    display: flex;
+  }
+  
+  .rsContainerTop div {
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+
+  .rsImageContainer{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+  }
+  

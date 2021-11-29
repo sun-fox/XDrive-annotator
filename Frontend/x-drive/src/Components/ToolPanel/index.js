@@ -4,7 +4,7 @@ import './index.css'
 import ImageUploader from '../ImageUploader'
 import ImgAnnotator from "../ImgAnnotator";
 
-export default function ToolPanel() {
+export default function ToolPanel(props) {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -25,15 +25,15 @@ export default function ToolPanel() {
                 <button className="btn btn-success" style={{marginTop: '20px'}}><i class="fas fa-draw-polygon"></i> Draw</button>
                 <button className="btn btn-warning"><i class="far fa-save"></i> Save</button>
                 
-                <button onClick={toggleModal} className="btn btn-danger btn-modal">
+                <button onClick={toggleModal} className="btn btn-danger">
                 <i class="fas fa-file-upload"></i> Import Image
                 </button>
 
                 {modal && (
                   <div className="modalx">
-                    <div onClick={toggleModal} className="overlay"></div>
+                    <div onClick={toggleModal} ></div>
                     <div className="modal-content">
-                      <ImageUploader/>
+                      <ImageUploader dat_name={props.dat_name}/>
                       <button className="close-modal" onClick={toggleModal}>
                         CLOSE
                       </button>

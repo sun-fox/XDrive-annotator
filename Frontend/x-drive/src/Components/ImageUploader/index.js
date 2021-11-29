@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
 import './index.css';
+import axios from "axios";
 export class App extends Component {
   state={
-    profileImg:'https://lh3.googleusercontent.com/proxy/OxgK8d6yYc99sjB2vCxn95FYmg5w4RHroNkdHm5ihFkx57jSMkDl8K9CxoY_DZZLg-FQVjRjz5SWeGMe0PtQYJXubzPHoTPXABa5HZa5H1Z7-g'
+    profileImg:'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640'
   }
   imageHandler = (e) => {
+	console.log(e.target.value)
     const reader = new FileReader();
     reader.onload = () =>{
       if(reader.readyState === 2){
         this.setState({profileImg: reader.result})
 
-      }
+		// var dataset = 'qwertyu'
+		console.log("help:", this.props.dat_name)
+		const files = e.target.files;
+		let formData = new FormData();
+
+		for (const key of Object.keys(files)) {
+		formData.append("imagesArray", files[key]);
+		}
+		// formData.append("dat_name",dataset);
+		axios.post(`http://localhost:4000/upload_dataset/${this.props.dat_name}`, formData, {}).then((response) => {
+		// setImg(response.data);
+		console.log(response.data);
+		});
+	   }
     }
     reader.readAsDataURL(e.target.files[0])
   };
 
-  imageAdder = (e) => {
+//   imageAdder = (e) => {
+// 	  console.log(e.target)
 	// const reader = new FileReader();
 	//   reader.onload = () =>{
 	//     if(reader.readyState === 2){
@@ -46,9 +62,10 @@ export class App extends Component {
 	//       // setData(result)
 	//     })
 	//     .catch(error => console.log('error', error));
-	// }
+// 	}
+//   };
 
-  };
+
 	render() {
     const { profileImg} = this.state
 		return (
@@ -59,11 +76,11 @@ export class App extends Component {
 					<div className="img-holder">
 						<img src={profileImg} alt="" id="img" className="img" />
 					</div>
-					<input type="file" accept="image/*" name="image-upload" id="input" onChange={this.imageHandler} />
+					<input type="file" accept="image/*" name="image-upload" id="input" multiple onChange={this.imageHandler} />
 					<div className="label">
 					<label className="btn btn-primary image-upload" htmlFor="input">Browse</label>
 					</div>
-					<button className="btn btn-success" onClick={this.imageAdder}>Add</button>
+					{/* <button className="btn btn-success" onClick={this.imageAdder}>Add</button> */}
 				</div>
 			</div>
 		);

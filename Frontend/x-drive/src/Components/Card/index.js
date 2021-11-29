@@ -6,8 +6,10 @@ import "./card.css";
 const Card = (props) => {
   const { src, image } = props;
   const history = useHistory();
+  // console.log(history.location.pathname.split('/')[2])
+  let dat_name = history.location.pathname.split('/')[2]
   const ClickHandler=()=>{
-    history.push({pathname:'/annotate', state:{src}})
+    history.push({pathname:'/annotate', state:{src,dat_name}})
     console.log(src)
   }
 
