@@ -64,7 +64,7 @@ export default function ImagePanel(props) {
       redirect: 'follow'
     };
 
-    fetch("http://192.168.0.104:5000/image", requestOptions)
+    fetch("http://172.18.12.70:5000/image", requestOptions)
       .then(response => {
         console.log(response)
         return response.text()})

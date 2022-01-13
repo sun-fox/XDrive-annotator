@@ -26,7 +26,10 @@ export default function ReactAnnotator() {
                 },
                 body: JSON.stringify(data)
             };
-            fetch("http://localhost:4000/new_annotations",options);
+            try{
+                fetch("http://localhost:4000/new_annotations",options);
+            }
+            catch(e){}
         }}
         />
         // How to pass a path : selectedImage="./images/cabc30fc-e7726578.jpg"
